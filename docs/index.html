@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>&lt;inoffiziell&gt; Citrus Client</title>
-<link rel="icon" type="image/png" href="./src/img/icon.png">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&lt;inoffiziell&gt; Citrus Client</title>
+    <link rel="icon" type="image/png" href="./src/img/icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/assets/bar/style.css">
+    <script src="./src/assets/bar/script.js"></script>
 </head>
 <body>
-
-<header>
-    <div class="logo">
-        <a href="./">
-            <img src="./src/img/icon.png" alt="Citrus Client Logo">
-        </a>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="./over">Übersicht</a></li>
-            <li><a href="./download">Download</a></li>
-            <li><a href="./login">Login</a></li>
-            <button id="themeToggle" class="theme-toggle" aria-label="Designmodus wechseln">
-                <img id="themeIcon" src="./src/img/icons/dark/auto.png" alt="Auto">
-            </button>
-        </ul>
-    </nav>
-</header>
+    <script>
+        createNavbar("./");
+    </script>
 
 <section class="hero">
     <h1>Willkommen beim Citrus Client (inoffiziell)</h1>
@@ -36,8 +23,6 @@
 <footer>
     &copy; noname-coding für Citrus Client
 </footer>
-
-<script src="./src/js/theme.js"></script>
 
 </body>
 </html>
