@@ -1,0 +1,101 @@
+@import "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap";@font-face {
+    font-family: Gondens;
+    src: url(/assets/GondensDEMO-BmsNeYYy.otf)format("opentype")
+}
+
+:root {
+    --citrus-c1: #fff;
+    --citrus-c2: #fff;
+    --citrus-c3: #fff
+}
+
+html,body {
+    height: 100%;
+    margin: 0
+}
+
+body {
+    font-family: Gondens,sans-serif
+}
+
+#root {
+    isolation: isolate;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    position: relative;
+    overflow: hidden
+}
+
+svg {
+    object-fit: contain;
+    color: #fff;
+    z-index: 2;
+    width: 2000%;
+    height: 2000%
+}
+
+.title {
+    color: #fff;
+    opacity: .8;
+    will-change: transform;
+    font-family: Gondens,sans-serif;
+    font-size: 178px;
+    line-height: .9;
+    position: relative
+}
+
+.title-container {
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: 300px;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    overflow: hidden;
+    transform: translate(-50%)
+}
+
+.title-container.first {
+    top: 20%
+}
+
+.title-container.second {
+    top: calc(18% + 370px)
+}
+
+.bg {
+    object-fit: cover;
+    z-index: -1;
+    will-change: transform;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    inset: 0
+}
+
+.my-glass {
+    color: #fff;
+    letter-spacing: .04em;
+    z-index: 1;
+    place-items: center;
+    font-weight: 800;
+    display: grid;
+    position: relative
+}
+
+.panel {
+    will-change: opacity;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 60px;
+    margin-bottom: 44%;
+    font-size: 32px;
+    display: flex;
+    overflow: hidden
+}

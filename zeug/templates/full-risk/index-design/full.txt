@@ -1,0 +1,306 @@
+---- index.html ----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Liquid Glass Demo</title>
+  <link rel="preload" href="/assets/bg-B0GkJE0Z.jpg" as="image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://esm.sh">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <script type="module" crossorigin src="/assets/index-GIkI8mTw.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DkIyJFh9.css">
+</head>
+<body>
+<div id="root">
+  <img class="bg" src="/assets/bg-B0GkJE0Z.jpg" alt="" fetchpriority="high">
+  <div class="my-glass panel">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 297">
+      <defs>
+        <linearGradient id="citrusGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color: var(--citrus-c1)" />
+          <stop offset="100%" style="stop-color: var(--citrus-c3)" />
+        </linearGradient>
+      </defs>
+      <g id="layer1">
+        <path
+                class="line"
+                d="M42.741 71.477c-9.881 11.604-19.355 25.994-19.45 36.75-.037 4.047 1.255 7.58 4.354 10.256 4.46 3.854 9.374 5.213 14.264 5.221 7.146.01 14.242-2.873 19.798-5.096 9.357-3.742 112.79-48.659 112.79-48.659.998-.5.811-1.123-.438-.812-.504.126-112.603 30.505-112.603 30.505a24.771 24.771 0 0 1-6.524.934c-8.615.051-16.281-4.731-16.219-14.808.024-3.943 1.231-8.698 4.028-14.291z"
+                id="text1"
+                style="fill:none;stroke:url(#citrusGradient);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;"
+                transform="matrix(0.26458333,0,0,0.26458333,-1.5446581,52.224136)"
+                aria-label="Citrus"
+        />
+      </g>
+    </svg>
+  </div>
+  <div class="title-container first">
+    <div class="title my-glass">DISCOVER</div>
+  </div>
+  <div class="title-container second">
+    <div class="title">YOUR</div>
+  </div>
+</div>
+</body>
+</html>
+
+---- assets/index-Glkl8mTw.js ----
+import {animate as e, svg as t} from "https://esm.sh/animejs";
+import {LiquidGlass as n} from "https://cdn.jsdelivr.net/npm/@ybouane/liquidglass/dist/index.js";
+(function() {
+    let e = document.createElement(`link`).relList;
+    if (e && e.supports && e.supports(`modulepreload`))
+        return;
+    for (let e of document.querySelectorAll(`link[rel="modulepreload"]`))
+        n(e);
+    new MutationObserver(e => {
+        for (let t of e)
+            if (t.type === `childList`)
+                for (let e of t.addedNodes)
+                    e.tagName === `LINK` && e.rel === `modulepreload` && n(e)
+    }
+    ).observe(document, {
+        childList: !0,
+        subtree: !0
+    });
+    function t(e) {
+        let t = {};
+        return e.integrity && (t.integrity = e.integrity),
+        e.referrerPolicy && (t.referrerPolicy = e.referrerPolicy),
+        e.crossOrigin === `use-credentials` ? t.credentials = `include` : e.crossOrigin === `anonymous` ? t.credentials = `omit` : t.credentials = `same-origin`,
+        t
+    }
+    function n(e) {
+        if (e.ep)
+            return;
+        e.ep = !0;
+        let n = t(e);
+        fetch(e.href, n)
+    }
+}
+)(),
+Date.now,
+Array.isArray;
+var r = Math.abs
+  , i = e => e
+  , a = (e, t, n) => (((1 - 3 * n + 3 * t) * e + (3 * n - 6 * t)) * e + 3 * t) * e
+  , o = (e, t, n) => {
+    let i = 0, o = 1, s, c, l = 0;
+    do
+        c = i + (o - i) / 2,
+        s = a(c, t, n) - e,
+        s > 0 ? o = c : i = c;
+    while (r(s) > 1e-7 && ++l < 100);
+    return c
+}
+  , s = ( (e=.5, t=0, n=.5, r=1) => e === t && n === r ? i : i => i === 0 || i === 1 ? i : a(o(i, e, n), t, r))(.7, .1, .126, 1.01)
+  , c = () => {
+    e(t.createDrawable(`.line`), {
+        draw: [`0 0`, `0 1`, `1 1`],
+        ease: `inOutQuad`,
+        duration: 5500,
+        loop: !0
+    }),
+    e(`.title`, {
+        translateY: [`200%`, `0%`],
+        duration: 1e3,
+        ease: s
+    }),
+    e(`.panel`, {
+        opacity: [`0`, `1`],
+        duration: 1e3,
+        ease: s
+    }),
+    e(`.bg`, {
+        scale: [`1.2`, `1`],
+        duration: 1e3,
+        ease: s
+    });
+    let n = document.querySelector(`.title-container.first .title`)
+      , r = document.querySelector(`.title-container.second .title`)
+      , i = [`DISCOVER`, `STYLE`]
+      , a = 0
+      , o = () => {
+        a = (a + 1) % i.length,
+        e(n, {
+            translateY: [`0%`, `-200%`],
+            duration: 600,
+            ease: s,
+            onComplete: () => {
+                n.innerHTML = i[a],
+                e(n, {
+                    translateY: [`200%`, `0%`],
+                    duration: 600,
+                    ease: s
+                })
+            }
+        }),
+        e(r, {
+            translateY: [`0%`, `-200%`],
+            duration: 600,
+            ease: s,
+            onComplete: () => {
+                a === 1 ? r.closest(`.title-container`).style.visibility = `hidden` : (r.closest(`.title-container`).style.visibility = `visible`,
+                r.innerHTML = `YOUR`,
+                e(r, {
+                    translateY: [`200%`, `0%`],
+                    duration: 600,
+                    ease: s
+                }))
+            }
+        }),
+        setTimeout(o, 3e3)
+    }
+    ;
+    setTimeout(o, 3e3)
+}
+  , l = () => {
+    let e = document.querySelector(`.my-glass`);
+    return e.dataset.config = JSON.stringify({
+        floating: !1,
+        blurAmount: .25,
+        refraction: .69,
+        chromAberration: .15,
+        edgeHighlight: .05,
+        specular: 0,
+        fresnel: 1,
+        cornerRadius: 40,
+        zRadius: 40,
+        brightness: 0,
+        saturation: 0,
+        shadowOpacity: .3
+    }),
+    n.init({
+        root: document.querySelector(`#root`),
+        glassElements: [e]
+    })
+}
+;
+window.addEventListener(`load`, () => {
+    let e = document.querySelector(`.bg`)
+      , t = () => {
+        l().then(e => {
+            window.__liquidGlassInstance = e,
+            requestAnimationFrame( () => {
+                requestAnimationFrame( () => {
+                    c()
+                }
+                )
+            }
+            )
+        }
+        )
+    }
+    ;
+    e.complete && e.naturalWidth !== 0 ? t() : e.addEventListener(`load`, t, {
+        once: !0
+    })
+}
+, {
+    once: !0
+});
+
+
+---- assets/index-DklyJFh9.css ----
+@import "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap";@font-face {
+    font-family: Gondens;
+    src: url(/assets/GondensDEMO-BmsNeYYy.otf)format("opentype")
+}
+
+:root {
+    --citrus-c1: #fff;
+    --citrus-c2: #fff;
+    --citrus-c3: #fff
+}
+
+html,body {
+    height: 100%;
+    margin: 0
+}
+
+body {
+    font-family: Gondens,sans-serif
+}
+
+#root {
+    isolation: isolate;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    position: relative;
+    overflow: hidden
+}
+
+svg {
+    object-fit: contain;
+    color: #fff;
+    z-index: 2;
+    width: 2000%;
+    height: 2000%
+}
+
+.title {
+    color: #fff;
+    opacity: .8;
+    will-change: transform;
+    font-family: Gondens,sans-serif;
+    font-size: 178px;
+    line-height: .9;
+    position: relative
+}
+
+.title-container {
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: 300px;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    overflow: hidden;
+    transform: translate(-50%)
+}
+
+.title-container.first {
+    top: 20%
+}
+
+.title-container.second {
+    top: calc(18% + 370px)
+}
+
+.bg {
+    object-fit: cover;
+    z-index: -1;
+    will-change: transform;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    inset: 0
+}
+
+.my-glass {
+    color: #fff;
+    letter-spacing: .04em;
+    z-index: 1;
+    place-items: center;
+    font-weight: 800;
+    display: grid;
+    position: relative
+}
+
+.panel {
+    will-change: opacity;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 60px;
+    margin-bottom: 44%;
+    font-size: 32px;
+    display: flex;
+    overflow: hidden
+}
