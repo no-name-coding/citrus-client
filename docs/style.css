@@ -1,3 +1,14 @@
+/* fonts*/
+@font-face {
+    font-family: "Minecraft";
+    src: url("./src/font/minecraft.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+} .font-minecraft {
+    font-family: "Minecraft", Arial, sans-serif;
+}
+
+/* main */
 * {
     margin: 0;
     padding: 0;
